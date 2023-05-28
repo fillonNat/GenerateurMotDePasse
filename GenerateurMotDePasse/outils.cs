@@ -14,7 +14,7 @@ namespace FormationCS
             return DemanderNombreEntre(question, 1, int.MaxValue);
         }
 
-        static int DemanderNombreEntre(string question, int min, int max)
+        public static int DemanderNombreEntre(string question, int min, int max)
         {
 
             int nombre = DemanderNombre(question);
@@ -24,6 +24,7 @@ namespace FormationCS
             }
 
             Console.WriteLine("ERREUR: Vous devez entre un nombre entre " + min + " et " + max);
+            Console.WriteLine();
             return DemanderNombreEntre(question, min, max);  // Fonction récursive
         }
         static int DemanderNombre(string question)
@@ -42,6 +43,7 @@ namespace FormationCS
                 catch
                 {
                     Console.WriteLine("ERREUR: Vous devez rentre un nombre");
+                    Console.WriteLine();
                 }
             }
         }
