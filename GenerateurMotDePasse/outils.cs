@@ -11,10 +11,10 @@ namespace FormationCS
 
         public static int DemanderNombrePositifNonNul(string question)
         {
-            return DemanderNombreEntre(question, 1, int.MaxValue);
+            return DemanderNombreEntre(question, 1, int.MaxValue, "ERREUR: Le nombre doit être positif et non null.");
         }
 
-        public static int DemanderNombreEntre(string question, int min, int max)
+        public static int DemanderNombreEntre(string question, int min, int max, string messagePerso = null)
         {
 
             int nombre = DemanderNombre(question);
@@ -22,10 +22,17 @@ namespace FormationCS
             {
                 return nombre;
             }
-
-            Console.WriteLine("ERREUR: Vous devez entre un nombre entre " + min + " et " + max);
+            if (messagePerso != null)
+            {
+                Console.WriteLine(messagePerso);
+            }
+            else
+            {
+                Console.WriteLine("ERREUR: Vous devez entre un nombre entre " + min + " et " + max);
+            }
+            
             Console.WriteLine();
-            return DemanderNombreEntre(question, min, max);  // Fonction récursive
+            return DemanderNombreEntre(question, min, max, messagePerso);  // Fonction récursive
         }
         static int DemanderNombre(string question)
         {
